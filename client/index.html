@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>simple clicker game</title>
+      <meta charset="utf-8" />
+      <link rel="stylesheet" href="style.css" />
+   </head>
+
+   <body>
+      <p id="b">0</p>
+      <button class="button" onclick="makereq();">Make post req</button>
+      <script>
+         let d = document;
+         async function request(url, way) {
+            try {
+               const response = await fetch(url, {
+                  method: way,
+                  body: JSON.stringify({
+                     request: "name",
+                  }),
+                  headers: {
+                     "Content-type": "application/JSON; charset=UTF-8",
+                  },
+               });
+               const parsedResponse = await response.json();
+               return parsedResponse.msg;
+            } catch (e) {
+               console.error(e);
+            }
+         }
+         async function makereq() {
+            const ret = await request("/api/endpoint", "POST");
+            d.getElementById("b").innerHTML = ret;
+            console.log(ret);
+         }
+      </script>
+   </body>
+</html>
