@@ -27,7 +27,7 @@ app.use(express.json());
 var body;
 app.post("/api/write", (req, res) => {
     body = req.body
-    console.log(`write: ${body}`);
+    console.log(`write: ${JSON.stringify(body)}`);
     writeData(db, body.path, body.data);
 });
 app.post("/api/read", (req, res) => {
@@ -35,7 +35,7 @@ app.post("/api/read", (req, res) => {
     console.log(`read: ${body}`);
     getData(db, body.path, body.data);
 });
-app.use(express.static("./frontend/dist"));
+app.use(express.static("./client"));
 app.get("/", (req, res) => {
     res.sendFile();
 });
