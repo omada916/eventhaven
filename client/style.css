@@ -1,4 +1,8 @@
-/* From Uiverse.io by zjssun */
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
 .button {
   position: relative;
   padding: 10px 22px;
@@ -93,7 +97,6 @@
   }
 }
 
-/* From Uiverse.io by kamehame-ha */
 .coolinput {
   display: flex;
   flex-direction: column;
@@ -103,6 +106,7 @@
 }
 
 .coolinput label.text {
+  font-family:Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   color: #818CF8;
   font-weight: 700;
@@ -115,6 +119,20 @@
 }
 
 .coolinput input[type=text].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #818CF8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+.coolinput input[type=date].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #818CF8 solid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+.coolinput input[type=time].input {
   padding: 11px 10px;
   font-size: 0.75rem;
   border: 2px #818CF8 solid;

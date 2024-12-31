@@ -21,12 +21,14 @@ async function request(url, way, body) {
         console.error(e);
     }
 }
-function createEvent(name, time) {
+function createEvent() {
     var eventInfo = {
-        name,
+        name: g("name"),
+        desc: g("desc"),
         info: {
-            time,
-            location: g()
+            date: g("date"),
+            time: g("time"),
+            location: g(""),
         }
     }
 }

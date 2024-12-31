@@ -8,14 +8,26 @@
 </head>
 
 <body>
-   <p id="b">0</p>
-   <div class="coolinput">
-      <label for="input" class="text">Name:</label>
-      <input type="text" placeholder="Write here..." name="input" class="input">
+   <button class="button">Show Event Creator</button>
+   <div id="event-creator">
+      <p>Create Event</p>
+      <div class="coolinput">
+         <label for="input" class="text">Name:</label>
+         <input type="text" placeholder="Write here..." name="input" class="input" id="name">
+      </div>
+      <div class="coolinput">
+         <label for="input" class="text">Description:</label>
+         <input type="text" placeholder="Write here..." name="input" class="input" id="desc">
+      </div>
+      <div class="coolinput">
+         <label for="input" class="text">Date:</label>
+         <input type="date" placeholder="Write here..." name="input" class="input" id="date">
+      </div>
+      <div class="coolinput">
+         <label for="input" class="text">Time:</label>
+         <input type="time" placeholder="Write here..." name="input" class="input" id="time">
+      </div>
    </div>
-   <input type="text" placeholder="Description" id="info">
-   <input type="date" placeholder="date" id="date">
-   <input type="time" placeholder="time" id="time">
    <br></br>
    <button class="button" id="td" onclick="t();">Read</button>
    <button class="button" onclick="makereq();">Create an Event</button>

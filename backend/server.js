@@ -25,7 +25,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 var body;
-app.post("/api/write", (req, res) => {
+app.post("/api/createEvent", (req, res) => {
     body = req.body
     console.log(`write: ${body}`);
     writeData(db, body.path, body.data);
