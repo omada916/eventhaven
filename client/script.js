@@ -2,12 +2,9 @@ let d = document;
 window.reqType = "Read"
 var pathd, datad;
 async function request(url, way, body) {
-    function g(id) {
-        return d.getElementById(id);
-    }
+    
     try {
-        pathd = d.getElementById("1").value;
-        datad = d.getElementById("2").value;
+
         const response = await fetch(url, {
             method: way,
             body,
@@ -20,6 +17,9 @@ async function request(url, way, body) {
     } catch (e) {
         console.error(e);
     }
+}
+function g(id) {
+    return d.getElementById(id).value;
 }
 function createEvent() {
     var eventInfo = {

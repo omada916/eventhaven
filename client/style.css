@@ -2,6 +2,9 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.event-creator {
+  display:none;
+}
 
 .button {
   position: relative;

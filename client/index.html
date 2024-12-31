@@ -9,7 +9,7 @@
 
 <body>
    <button class="button">Show Event Creator</button>
-   <div id="event-creator">
+   <div class="event-creator" display="none">
       <p>Create Event</p>
       <div class="coolinput">
          <label for="input" class="text">Name:</label>
@@ -27,10 +27,14 @@
          <label for="input" class="text">Time:</label>
          <input type="time" placeholder="Write here..." name="input" class="input" id="time">
       </div>
+      <div class="coolinput">
+         <label for="input" class="text">Location:</label>
+         <input type="" placeholder="Write here..." name="input" class="input" id="time">
+      </div>
+      <button class="button" onclick="makereq();">Create an Event</button>
    </div>
    <br></br>
    <button class="button" id="td" onclick="t();">Read</button>
-   <button class="button" onclick="makereq();">Create an Event</button>
    <script src="script.js"></script>
 </body>
 
