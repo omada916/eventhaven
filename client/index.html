@@ -9,11 +9,16 @@
 
 <body>
    <p id="b">0</p>
-   <input type="text" placeholder="path" id="1">
-   <input type="text" placeholder="data" id="2">
+   <div class="coolinput">
+      <label for="input" class="text">Name:</label>
+      <input type="text" placeholder="Write here..." name="input" class="input">
+   </div>
+   <input type="text" placeholder="Description" id="info">
+   <input type="date" placeholder="date" id="date">
+   <input type="time" placeholder="time" id="time">
    <br></br>
    <button class="button" id="td" onclick="t();">Read</button>
-   <button class="button" onclick="makereq();">Make post req</button>
+   <button class="button" onclick="makereq();">Create an Event</button>
    <script src="script.js"></script>
 </body>
 

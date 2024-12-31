@@ -1,16 +1,16 @@
 let d = document;
 window.reqType = "Read"
 var pathd, datad;
-async function request(url, way) {
+async function request(url, way, body) {
+    function g(id) {
+        return d.getElementById(id);
+    }
     try {
         pathd = d.getElementById("1").value;
         datad = d.getElementById("2").value;
         const response = await fetch(url, {
             method: way,
-            body: JSON.stringify({
-                path: pathd,
-                data: datad,
-            }),
+            body,
             headers: {
                 "Content-type": "application/JSON; charset=UTF-8",
             },
@@ -21,10 +21,14 @@ async function request(url, way) {
         console.error(e);
     }
 }
-async function makereq() {
-    const ret = await request(`/api/${window.reqType}`, "POST");
-    d.getElementById("b").innerHTML = ret;
-    console.log(ret);
+function createEvent(name, time) {
+    var eventInfo = {
+        name,
+        info: {
+            time,
+            location: g()
+        }
+    }
 }
 function t() {
     if (window.reqType === "Read") {

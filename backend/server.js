@@ -27,7 +27,7 @@ app.use(express.json());
 var body;
 app.post("/api/write", (req, res) => {
     body = req.body
-    console.log(`write: ${JSON.stringify(body)}`);
+    console.log(`write: ${body}`);
     writeData(db, body.path, body.data);
 });
 app.post("/api/read", (req, res) => {
