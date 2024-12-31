@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import { initializeApp } from "firebase/app";
+import { getDatabase } from 'firebase/database';
+import { getData, writeData } from "./functions.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDol293-uzm6oykcG47e_M4aOj71zG4U9U",
@@ -11,19 +13,29 @@ const firebaseConfig = {
     appId: "1:705351216802:web:d16ccfa16d0f9d1da9b1fb",
     measurementId: "G-0L9BLHYXST",
 };
-const fbapp = initializeApp(firebaseConfig);
+
+const app = express();
+const firebase = initializeApp(firebaseConfig);
+const db = getDatabase(firebase);
+
+
 dotenv.config();
 const PORT = process.env.PORT;
 
-var app = express();
-app.use(express.static("./client"));
+
 app.use(express.json());
-
-app.post("/api/endpoint", (req, res) => {
-    res.status(200).json({ msg: "recieved" });
-    console.log(req.body.request);
+var body;
+app.post("/api/write", (req, res) => {
+    body = req.body
+    console.log(`write: ${body}`);
+    writeData(db, body.path, body.data);
 });
-
+app.post("/api/read", (req, res) => {
+    body = req.body
+    console.log(`read: ${body}`);
+    getData(db, body.path, body.data);
+});
+app.use(express.static("./frontend/dist"));
 app.get("/", (req, res) => {
     res.sendFile();
 });
@@ -31,5 +43,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server on ${PORT}`);
 });
-
-//yo edited from laptop
