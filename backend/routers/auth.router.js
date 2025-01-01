@@ -1,4 +1,9 @@
-import { signup } from "../auth/functions.auth"
+import { signup } from "../auth/functions.auth.js"
 import express from "express";
 
-const router = express.router();
+const router = express.Router();
+
+router.post("/signup", signup);
+
+
+export default router;

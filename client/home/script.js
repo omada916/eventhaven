@@ -2,9 +2,7 @@ let d = document;
 window.reqType = "Read"
 var pathd, datad;
 async function request(url, way, body) {
-    
     try {
-
         const response = await fetch(url, {
             method: way,
             body,

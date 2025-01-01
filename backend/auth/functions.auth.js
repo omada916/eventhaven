@@ -1,4 +1,4 @@
-import { writeData } from "../functions";
+import { writeData } from "../functions.js";
 export const signup = async (req, res) => {
    try {
       const { Name, username, email, password } = req.body;
