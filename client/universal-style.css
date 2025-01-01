@@ -97,16 +97,17 @@ p {
       background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
    }
 }
+
 .coolinput {
    display: flex;
    flex-direction: column;
    width: fit-content;
    position: static;
    max-width: 240px;
- }
- 
- .coolinput label.text {
-   font-family:Arial, Helvetica, sans-serif;
+}
+
+.coolinput label.text {
+   font-family: Arial, Helvetica, sans-serif;
    font-size: 0.75rem;
    color: #818CF8;
    font-weight: 700;
@@ -116,30 +117,17 @@ p {
    padding: 0 3px;
    background: #e8e8e8;
    width: fit-content;
- }
- 
- .coolinput input[type=text].input {
+}
+
+.coolinput input.input {
    padding: 11px 10px;
    font-size: 0.75rem;
    border: 2px #818CF8 solid;
    border-radius: 5px;
    background: #e8e8e8;
- }
- .coolinput input[type=date].input {
-   padding: 11px 10px;
-   font-size: 0.75rem;
-   border: 2px #818CF8 solid;
-   border-radius: 5px;
-   background: #e8e8e8;
- }
- .coolinput input[type=time].input {
-   padding: 11px 10px;
-   font-size: 0.75rem;
-   border: 2px #818CF8 solid;
-   border-radius: 5px;
-   background: #e8e8e8;
- }
- 
- .coolinput input[type=text].input:focus {
+}
+
+
+.coolinput input.input:focus {
    outline: none;
- }
+}
