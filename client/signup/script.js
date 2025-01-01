@@ -7,3 +7,7 @@ async function createAccount() {
    }
    await request("/auth/signup", "POST", JSON.stringify(userData));
 }
+
+function convtoenc() {
+   
+}
