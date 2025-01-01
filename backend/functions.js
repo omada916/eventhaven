@@ -9,7 +9,7 @@ export const getData = async (db, path, pname) => {
             if (snapshot.exists()) {
                 data = snapshot.val();
             } else {
-                data = "No data available";
+                data = "No";
             }
         })
         .catch((error) => {

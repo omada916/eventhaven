@@ -34,11 +34,7 @@ const PORT = process.env.PORT;
 app.use(express.static("./client"))
 app.use(express.json({limit: "5mb"}));
 var body;
-app.post("/api/createEvent", (req, res) => {
-    body = req.body
-    console.log(`write: ${body}`);
-    writeData(db, body.path, body.data);
-});
+
 app.use("/auth", authRoutes);
 
 app.get("/", (req, res) => {
