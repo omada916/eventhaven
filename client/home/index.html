@@ -28,13 +28,21 @@
       </ul>
    </div>
 
-   <!-- Main Content -->
-   <div class="main-content">
-      <h1>Welcome to the Ultraviolet Theme Page</h1>
-      <p>Here is some main content that takes advantage of a toggleable sidebar for navigation.</p>
-   </div>
+   <h1 class="text">
+      Create the perfect
+      <span class="typewriter"></span>
+   </h1>
 
    <script src="script.js"></script>
+   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+   <script>
+      var typed = new Typed('.typewriter', {
+         strings: ["event", "function", "celebration", "festival", "performance"],
+         typeSpeed: 120,
+         backSpeed: 120,
+         loop: true
+      });
+   </script>
 </body>
 
 </html>
