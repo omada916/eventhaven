@@ -1,6 +1,9 @@
 import { writeData } from "../functions.js";
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
+
 
 const firebaseConfig = {
    apiKey: "AIzaSyDol293-uzm6oykcG47e_M4aOj71zG4U9U",
@@ -14,6 +17,7 @@ const firebaseConfig = {
 
 const firebase = initializeApp(firebaseConfig);
 const db = getDatabase(firebase)
+const auth = getAuth(firebase);
 
 export const signup = async (req, res) => {
    console.log("signup requested")
@@ -31,6 +35,17 @@ export const signup = async (req, res) => {
       }
 
       writeData(db, `/users/${username}`, newUser)
+      createUserWithEmailAndPassword(auth, email, password)
+         .then((userCredential) => {
+            // Signed up 
+            const user = userCredential.user;
+            // ...
+         })
+         .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+         });
       res.status(201);
    } catch (error) {
       console.error(error);
@@ -38,4 +53,18 @@ export const signup = async (req, res) => {
    res.json({
       data: "Signup endpoint reached",
    });
+}
+
+export const login = () => {
+   signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+         // Signed in 
+         const user = userCredential.user;
+         console.log(user);
+         // ...
+      })
+      .catch((error) => {
+         const errorCode = error.code;
+         const errorMessage = error.message;
+      });
 }

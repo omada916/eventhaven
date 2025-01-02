@@ -38,12 +38,16 @@ function t() {
    }
    d.getElementById("td").innerHTML = window.reqType;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-   const toggleButton = document.getElementById("burger");
+const toggleButton = document.getElementById("burger");
    const sidebar = document.querySelector('.sidebar');
-
+   
+document.addEventListener('DOMContentLoaded', () => {
    toggleButton.addEventListener('click', () => {
       sidebar.classList.toggle('active');
    });
 });
+
+function showSignUp() {
+   document.querySelector(".signup-container").style.display = "flex";
+   sidebar.classList.toggle('active');
+}

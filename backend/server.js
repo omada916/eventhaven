@@ -1,18 +1,9 @@
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-console.log(__dirname);
-
 import express from "express";
 import dotenv from "dotenv";
-import path from "path";
+import authRoutes from "./routers/auth.router.js";
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database';
-import { getData, writeData } from "./functions.js";
-import authRoutes from "./routers/auth.router.js";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDol293-uzm6oykcG47e_M4aOj71zG4U9U",
@@ -26,8 +17,9 @@ const firebaseConfig = {
 
 const root = "/workspaces/node-project/" //configure when deploying
 const app = express();
-const firebase = initializeApp(firebaseConfig);
-const db = getDatabase(firebase);
+const fb = initializeApp(firebaseConfig);
+const db = getDatabase(fb);
+const auth = getAuth(fb)
 
 dotenv.config();
 const PORT = process.env.PORT;
