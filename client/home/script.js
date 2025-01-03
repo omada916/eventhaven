@@ -1,24 +1,14 @@
 let d = document;
 window.reqType = "Read"
-var pathd, datad;
-async function request(url, way, body) {
-   try {
-      const response = await fetch(url, {
-         method: way,
-         body,
-         headers: {
-            "Content-type": "application/JSON; charset=UTF-8",
-         },
-      });
-      const parsedResponse = await response.json();
-      return parsedResponse;
-   } catch (e) {
-      console.error(e);
+
+function g(w, id) {
+   if (w === "i") {
+      return d.getElementById(id).value;
+   } else if (w === "q") {
+      return d.querySelector(id);
    }
 }
-function g(id) {
-   return d.getElementById(id).value;
-}
+/*
 function createEvent() {
    var eventInfo = {
       name: g("name"),
@@ -29,7 +19,7 @@ function createEvent() {
          location: g(""),
       }
    }
-}
+}*/
 function t() {
    if (window.reqType === "Read") {
       window.reqType = "Write";
@@ -38,9 +28,10 @@ function t() {
    }
    d.getElementById("td").innerHTML = window.reqType;
 }
-const toggleButton = document.getElementById("burger");
-   const sidebar = document.querySelector('.sidebar');
-   
+const toggleButton = document.querySelector(".burger")
+const sidebar = document.querySelector('.sidebar');
+
+
 document.addEventListener('DOMContentLoaded', () => {
    toggleButton.addEventListener('click', () => {
       sidebar.classList.toggle('active');
@@ -49,5 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showSignUp() {
    document.querySelector(".signup-container").style.display = "flex";
+   document.querySelector(".login-container").style.display = "none";
    sidebar.classList.toggle('active');
+   g("q", ".burger").checked = false;
+}
+function showLogin() {
+   document.querySelector(".login-container").style.display = "flex";
+   document.querySelector(".signup-container").style.display = "none"
 }
