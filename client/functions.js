@@ -15,6 +15,3 @@ async function request(url, way, body) {
       console.error(e);
    }
 }
-function g(id) {
-   return d.getElementById(id).value;
-}

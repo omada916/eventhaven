@@ -9,6 +9,7 @@
          rel="stylesheet"
       />
       <link rel="stylesheet" href="style.css" />
+      <script src="../functions.js"></script>
    </head>
 
    <body>
@@ -57,7 +58,7 @@
                <div class="input-group">
                   <label for="email">Email Address</label>
                   <input
-                     type="email"
+                     type="text"
                      id="email"
                      placeholder="Enter your email"
                   />
@@ -166,21 +167,18 @@
             </form>
          </div>
       </div>
+      <!--Login container-->
       <div class="login-container">
          <div class="signup-card">
-            <h1>Create Account</h1>
+            <h1>Log In</h1>
             <form>
                <div class="input-group">
-                  <label for="un">Username</label>
-                  <input type="un" id="un" placeholder="Enter a username" />
+                  <label for="un">Email</label>
+                  <input type="un" id="username" placeholder="Enter email" />
                </div>
                <div class="input-group">
-                  <label for="password">Password</label>
-                  <input
-                     type="password"
-                     id="password"
-                     placeholder="Create a password"
-                  />
+                  <label for="passwords">Password</label>
+                  <input type="password" id="pw" placeholder="Password" />
                </div>
                <button
                   type="submit"
@@ -198,6 +196,8 @@
             </form>
          </div>
       </div>
+      <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
       <script src="script.js"></script>
       <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
       <script>

@@ -1,31 +1,9 @@
-let d = document;
-
 function g(w, id) {
    if (w === "i") {
       return d.getElementById(id).value;
    } else if (w === "q") {
       return d.querySelector(id);
    }
-}
-/*
-function createEvent() {
-   var eventInfo = {
-      name: g("q", "name"),
-      desc: g("q", "desc"),
-      info: {
-         date: g("q", "date"),
-         time: g("q", "time"),
-         location: g("q", ""),
-      }
-   }
-}*/
-function t() {
-   if (window.reqType === "Read") {
-      window.reqType = "Write";
-   } else {
-      window.reqType = "Read";
-   }
-   d.getElementById("td").innerHTML = window.reqType;
 }
 const toggleButton = g("q", ".hamburbur")
 const sidebar = g("q", '.sidebar');
@@ -54,3 +32,13 @@ function showOthers() {
 function hideOthers() {
    others.display = "none";
 }
+async function createAccount() {
+   const userData = {
+      name: g("i", "name"),
+      username: g("i", "un"),
+      email: g("i", "email"),
+      password: g("i", "password")
+   }
+   await request("/auth/signup", "POST", JSON.stringify(userData));
+}
+
