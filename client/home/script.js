@@ -1,3 +1,4 @@
+let d = document;
 function g(w, id) {
    if (w === "i") {
       return d.getElementById(id).value;
@@ -32,6 +33,7 @@ function showOthers() {
 function hideOthers() {
    others.display = "none";
 }
+hideOthers();
 async function createAccount() {
    const userCreationData = {
       name: g("i", "name"),

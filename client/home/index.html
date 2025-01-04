@@ -9,13 +9,12 @@
          rel="stylesheet"
       />
       <link rel="stylesheet" href="style.css" />
-      <script src="../functions.js"></script>
    </head>
 
    <body>
       <!-- Toggle Button -->
       <label class="hamburger">
-         <input type="checkbox" class="hamburbur" />
+         <input type="checkbox" class="hamburbur"/>
          <svg viewBox="0 0 32 32">
             <path
                class="line line-top-bottom"
@@ -24,6 +23,7 @@
             <path class="line" d="M7 16 27 16"></path>
          </svg>
       </label>
+
       <!-- Sidebar -->
       <div class="sidebar">
          <h2 class="sidebar-title">Menu</h2>
@@ -37,7 +37,7 @@
             </li>
          </ul>
       </div>
-
+      <!--the changing text-->
       <h1 class="text">
          Create the perfect
          <span class="typewriter"></span>
@@ -58,7 +58,7 @@
                <div class="input-group">
                   <label for="email">Email Address</label>
                   <input
-                     type="text"
+                     type="email"
                      id="email"
                      placeholder="Enter your email"
                   />
@@ -74,20 +74,12 @@
                <div class="mydict">
                   <div>
                      <label>
-                        <input
-                           onclick="hideOthers();"
-                           type="radio"
-                           name="radio"
-                        />
-                        <span class="f">Female</span>
+                        <input type="radio" name="radio" checked="" />
+                        <span class="f" onclick="hideOthers();">Female</span>
                      </label>
                      <label>
-                        <input
-                           onclick="hideOthers();"
-                           type="radio"
-                           name="radio"
-                        />
-                        <span class="m">Male</span>
+                        <input type="radio" name="radio" />
+                        <span class="m" onclick="hideOthers();">Male</span>
                      </label>
                      <label>
                         <input type="radio" name="radio" />
@@ -95,7 +87,7 @@
                      </label>
                   </div>
                </div>
-               <div class="radio-group" style="display: none">
+               <div class="radio-group">
                   <input
                      class="radio-input"
                      name="radio-group"
@@ -131,7 +123,7 @@
                   <input
                      class="radio-input"
                      name="radio-group"
-                     id="radio5"
+                     id="radio4"
                      type="radio"
                   />
                   <label class="radio-label" for="radio4">
@@ -167,18 +159,21 @@
             </form>
          </div>
       </div>
-      <!--Login container-->
       <div class="login-container">
          <div class="signup-card">
-            <h1>Log In</h1>
+            <h1>Create Account</h1>
             <form>
                <div class="input-group">
-                  <label for="un">Email</label>
-                  <input type="un" id="username" placeholder="Enter email" />
+                  <label for="un">Username</label>
+                  <input type="un" id="un" placeholder="Enter a username" />
                </div>
                <div class="input-group">
-                  <label for="passwords">Password</label>
-                  <input type="password" id="pw" placeholder="Password" />
+                  <label for="password">Password</label>
+                  <input
+                     type="password"
+                     id="password"
+                     placeholder="Create a password"
+                  />
                </div>
                <button
                   type="submit"

@@ -60,19 +60,15 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-   try {
-      const userCredential = await signInWithEmailAndPassword(
-         auth,
-         email,
-         password
-      );
-      const user = userCredential.user;
-      setCookie(res, "firebaseUser", user.uid, 7);
-      console.log("User logged in:", user.email);
-   } catch (error) {
-      console.error("Error:", error.code, error.message);
-      res.status(401).send("Login failed: " + error.message);
-   }
+   const { idToken } = req.body;
+   if (!idToken) return res.status(400).send("Token required");
+
+   res.cookie("authToken", idToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "Strict",
+   });
+   res.send("User logged in successfully");
 };
 
 function setCookie(res, name, value, days) {
@@ -85,3 +81,16 @@ function setCookie(res, name, value, days) {
    });
    res.setHeader("Set-Cookie", serializedCookie);
 }
+
+export const verifyToken = async (req, res, next) => {
+   const token = req.cookies.authToken;
+   if (!token) return res.status(401).send("Unauthorized");
+
+   try {
+      const decodedToken = await admin.auth().verifyIdToken(token);
+      req.user = decodedToken;
+      next();
+   } catch (error) {
+      res.status(401).send("Invalid token");
+   }
+};

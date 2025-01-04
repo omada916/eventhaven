@@ -1,1 +1,1 @@
-npm install nodemon express dotenv firebase path cors
+npm install nodemon express dotenv firebase path cors cookie-parser
