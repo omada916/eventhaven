@@ -1,5 +1,4 @@
 let d = document;
-window.reqType = "Read"
 
 function g(w, id) {
    if (w === "i") {
@@ -11,12 +10,12 @@ function g(w, id) {
 /*
 function createEvent() {
    var eventInfo = {
-      name: g("name"),
-      desc: g("desc"),
+      name: g("q", "name"),
+      desc: g("q", "desc"),
       info: {
-         date: g("date"),
-         time: g("time"),
-         location: g(""),
+         date: g("q", "date"),
+         time: g("q", "time"),
+         location: g("q", ""),
       }
    }
 }*/
@@ -28,23 +27,30 @@ function t() {
    }
    d.getElementById("td").innerHTML = window.reqType;
 }
-const toggleButton = document.querySelector(".burger")
-const sidebar = document.querySelector('.sidebar');
+const toggleButton = g("q", ".hamburbur")
+const sidebar = g("q", '.sidebar');
 
 
-document.addEventListener('DOMContentLoaded', () => {
+d.addEventListener('DOMContentLoaded', () => {
    toggleButton.addEventListener('click', () => {
       sidebar.classList.toggle('active');
    });
 });
 
 function showSignUp() {
-   document.querySelector(".signup-container").style.display = "flex";
-   document.querySelector(".login-container").style.display = "none";
+   g("q", ".signup-container").style.display = "flex";
+   g("q", ".login-container").style.display = "none";
    sidebar.classList.toggle('active');
-   g("q", ".burger").checked = false;
+   g("q", ".hamburbur").checked = false;
 }
 function showLogin() {
-   document.querySelector(".login-container").style.display = "flex";
-   document.querySelector(".signup-container").style.display = "none"
+   g("q", ".login-container").style.display = "flex";
+   g("q", ".signup-container").style.display = "none"
+}
+const others = g("q", ".radio-group").style;
+function showOthers() {
+   others.display = "flex";
+}
+function hideOthers() {
+   others.display = "none";
 }
