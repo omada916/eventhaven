@@ -14,7 +14,7 @@
    <body>
       <!-- Toggle Button -->
       <label class="hamburger">
-         <input type="checkbox" class="hamburbur"/>
+         <input type="checkbox" class="hamburbur" />
          <svg viewBox="0 0 32 32">
             <path
                class="line line-top-bottom"
@@ -162,10 +162,14 @@
       <div class="login-container">
          <div class="signup-card">
             <h1>Create Account</h1>
-            <form>
+            <form class="form">
                <div class="input-group">
                   <label for="un">Username</label>
-                  <input type="un" id="username" placeholder="Enter a username" />
+                  <input
+                     type="un"
+                     id="username"
+                     placeholder="Enter a username"
+                  />
                </div>
                <div class="input-group">
                   <label for="password">Password</label>
@@ -175,11 +179,7 @@
                      placeholder="Create a password"
                   />
                </div>
-               <button
-                  type="submit"
-                  class="signup-btn"
-                  onclick="createAccount();"
-               >
+               <button type="submit" class="signup-btn" onclick="login();">
                   Sign Up
                </button>
                <p class="signup-footer">
@@ -191,6 +191,7 @@
             </form>
          </div>
       </div>
+      <script type="module" src="login.js"></script>
       <script src="script.js"></script>
       <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
       <script>

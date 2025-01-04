@@ -25,7 +25,7 @@ const auth = getAuth(fb);
 dotenv.config();
 const PORT = process.env.PORT;
 app.use(cookieParser());
-app.use(express.static("./client"));
+app.use(express.static("./frontend/dist"));
 app.use(express.json({ limit: "5mb" }));
 app.use("/auth", authRoutes);
 app.use(
@@ -36,7 +36,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-   res.redirect("/home");
+   console.log("user on root")
 });
 
 app.get("*", (req, res) => {

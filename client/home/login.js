@@ -1,84 +1,101 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, getIdToken } from 'firebase/auth';
 
-// Initialize Firebase App
+// Firebase configuration
 const firebaseConfig = {
-   apiKey: "YOUR_FIREBASE_API_KEY", // Replace with your Firebase API key
-   authDomain: "your-project-id.firebaseapp.com",
-   projectId: "your-project-id",
+   apiKey: "AIzaSyDol293-uzm6oykcG47e_M4aOj71zG4U9U",
+   authDomain: "node-project-a176d.firebaseapp.com",
+   projectId: "node-project-a176d",
+   storageBucket: "node-project-a176d.firebasestorage.app",
+   messagingSenderId: "705351216802",
+   appId: "1:705351216802:web:d16ccfa16d0f9d1da9b1fb",
+   measurementId: "G-0L9BLHYXST",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Login Function
 async function login() {
-   const email = document.getElementById("email").value;
-   const password = document.getElementById("password").value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-   try {
-      // Sign in with Firebase and get an ID token
-      const userCredential = await signInWithEmailAndPassword(
-         auth,
-         email,
-         password
-      );
-      const idToken = await userCredential.user.getIdToken();
-
-      // Send the token to the server for secure cookie storage
-      const response = await fetch("http://localhost:5000/login", {
-         method: "POST",
-         credentials: "include", // Allow cookies to be sent/received
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify({ idToken }),
-      });
-
-      if (response.ok) {
-         alert("Logged in successfully");
-      } else {
-         alert("Login failed: " + (await response.text()));
-      }
-   } catch (error) {
-      alert("Error logging in: " + error.message);
-      console.error(error);
-   }
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        await storeIdToken(user); // Store the ID Token in a cookie
+        toggleLoginStatus(true);
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
 }
 
-// Logout Function
-async function logout() {
-   try {
-      // Notify the server to clear the auth cookie
-      const response = await fetch("http://localhost:5000/logout", {
-         method: "POST",
-         credentials: "include", // Ensure the cookie is included
-      });
+// Sign-Up Function
+async function signUp() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-      if (response.ok) {
-         alert("Logged out successfully");
-      } else {
-         alert("Logout failed: " + (await response.text()));
-      }
-   } catch (error) {
-      alert("Error logging out: " + error.message);
-      console.error(error);
-   }
+    try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert('Sign-up successful! Please log in.');
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
 }
 
-// Check Profile Function (Protected Route)
-async function checkProfile() {
-   try {
-      const response = await fetch("http://localhost:5000/profile", {
-         method: "GET",
-         credentials: "include", // Send the cookie to authenticate
-      });
+// Store the Firebase ID Token in a cookie
+async function storeIdToken(user) {
+    const idToken = await getIdToken(user);
+    document.cookie = `auth_token=${idToken}; path=/; HttpOnly`;  // Securely store the token in a cookie
+}
 
-      if (response.ok) {
-         alert(await response.text());
-      } else {
-         alert("Access denied: " + (await response.text()));
-      }
-   } catch (error) {
-      alert("Error checking profile: " + error.message);
-      console.error(error);
-   }
-};
+// Event Creation Function
+async function createEvent() {
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const date = document.getElementById('date').value;
+    const location = document.getElementById('location').value;
+
+    const eventData = { title, description, date, location };
+
+    try {
+        const response = await fetch('http://localhost:5000/create-event', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',  // Send cookies (auth_token)
+            body: JSON.stringify(eventData),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Event created successfully');
+        } else {
+            alert('Failed to create event: ' + result.message);
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
+
+// Toggle visibility based on login status
+function toggleLoginStatus(isLoggedIn) {
+    if (isLoggedIn) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('create-event').style.display = 'block';
+    } else {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('create-event').style.display = 'none';
+    }
+}
+
+// Listen for user authentication state changes
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        toggleLoginStatus(true);
+    } else {
+        toggleLoginStatus(false);
+    }
+});
