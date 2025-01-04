@@ -4,6 +4,9 @@ import authRoutes from "./routers/auth.router.js";
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import cors from "cors";
+
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDol293-uzm6oykcG47e_M4aOj71zG4U9U",
@@ -28,6 +31,11 @@ app.use(express.json({limit: "5mb"}));
 var body;
 
 app.use("/auth", authRoutes);
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
 
 app.get("/", (req, res) => {
     res.redirect("/home")

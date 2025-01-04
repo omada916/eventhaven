@@ -1,1 +1,1 @@
-npm install nodemon express dotenv firebase path
+npm install nodemon express dotenv firebase path cors

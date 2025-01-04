@@ -33,12 +33,19 @@ function hideOthers() {
    others.display = "none";
 }
 async function createAccount() {
-   const userData = {
+   const userCreationData = {
       name: g("i", "name"),
       username: g("i", "un"),
       email: g("i", "email"),
       password: g("i", "password")
    }
-   await request("/auth/signup", "POST", JSON.stringify(userData));
+   await request("/auth/signup", "POST", JSON.stringify(userCreationData));
 }
 
+async function login() {
+   const userLoginData = {
+      email: g("i", "username"),
+      password: g("i", "pw")
+   }
+   await request("/auth/login", "POST", JSON)
+}
