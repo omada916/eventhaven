@@ -28,6 +28,12 @@ const Navbar = ({ setCurrentPage }) => {
                >
                   Dashboard
                </button>
+               <div>
+                  <button>
+                     Dropdown
+                     <i></i>
+                  </button>
+               </div>
             </div>
          </div>
       </nav>
