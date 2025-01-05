@@ -24,16 +24,19 @@ const auth = getAuth(fb);
 
 dotenv.config();
 const PORT = process.env.PORT;
+const state = process.env.state;
 app.use(cookieParser());
 app.use(express.static("./frontend/dist"));
 app.use(express.json({ limit: "5mb" }));
 app.use("/auth", authRoutes);
+/* ADD IN PROD
 app.use(
    cors({
       origin: "http://localhost:3000",
       credentials: true,
    })
 );
+*/
 
 app.get("/", (req, res) => {
    console.log("user on root")
@@ -41,7 +44,7 @@ app.get("/", (req, res) => {
 
 app.get("*", (req, res) => {
    //404, KEEP AT END
-   res.status(404).redirect("/404");
+   res.sendFile("client/404/index.html")
 });
 
 app.listen(PORT, () => {
