@@ -23,40 +23,35 @@ const db = getDatabase(firebase);
 const auth = getAuth(firebase);
 
 export const signup = async (req, res) => {
-   authenticate(req, res, () => {
-      try {
-         const { name, username, email, password } = req.body;
-         const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-         if (!emailRegEx.test(email)) {
-            console.log(`Email Error: ${email}`);
-            return res.status(400).json({ error: "invalid email format" });
-         }
-         const newUser = {
-            name,
-            username,
-            email,
-            password,
-         };
-
-         writeData(db, `/users/${username}`, newUser);
-         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-               // Signed up
-               const user = userCredential.user;
-               // ...
-            })
-            .catch((error) => {
-               const errorCode = error.code;
-               const errorMessage = error.message;
-               // ..
-            });
-         res.status(201);
-      } catch (error) {
-         console.error(error);
+   try {
+      const { name, username, email, password } = req.body;
+      const emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegEx.test(email)) {
+         console.log(`Email Error: ${email}`);
+         return res.status(400).json({ error: "invalid email format" });
       }
-      res.json({
-         data: "Signup endpoint reached",
-      });
-   }, db);
+      const newUser = {
+         name,
+         username,
+         email,
+         password,
+      };
+
+      writeData(db, `/users/${username}`, newUser);
+      createUserWithEmailAndPassword(auth, email, password)
+         .then((userCredential) => {
+            const user = userCredential.user;
+         })
+         .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+         });
+      res.status(201);
+   } catch (error) {
+      console.error(error);
+   }
+   res.json({
+      data: "Signup endpoint reached",
+   });
    console.log("signup requested")
 };

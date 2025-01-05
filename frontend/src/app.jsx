@@ -6,13 +6,12 @@ import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 
 const App = () => {
-   const [currentPage, setCurrentPage] = useState("home"); // State to track the current page
+   const [currentPage, setCurrentPage] = useState("home");
 
-   // Function to render the current page
    const renderPage = () => {
       switch (currentPage) {
          case "home":
-            return <Home />;
+            return <Home setCurrentPage={setCurrentPage} />;
          case "register":
             return <Register />;
          case "login":

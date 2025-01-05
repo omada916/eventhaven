@@ -1,7 +1,7 @@
 import { useState } from "react";
-//import { signup } from "../scripts/auth";
+import { signup } from "../scripts/auth";
 
-const Register = () => {
+const Register = ({ setCurrentPage }) => {
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
@@ -9,7 +9,8 @@ const Register = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("Registered:", { name, email, password, username });
+      signup(name, username, email, password);
+      console.log(`Registered user ${username}`);
    };
 
    return (
@@ -69,6 +70,16 @@ const Register = () => {
             >
                Register
             </button>
+            <p>
+               Have an account?{" "}
+               <a
+                  onClick={() => {
+                     setCurrentPage("login");
+                  }}
+               >
+                  Log In
+               </a>
+            </p>
          </form>
       </div>
    );

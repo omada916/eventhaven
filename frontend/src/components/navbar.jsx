@@ -9,7 +9,7 @@ const Navbar = ({ setCurrentPage }) => {
    return (
       <nav className="bg-blue-600 p-4 text-white fixed w-full top-0 z-50">
          <div className="container mx-auto flex justify-between items-center">
-            <span className="text-xl font-bold">eventify</span>
+            <span className="text-xl font-bold">Eventify</span>
             <div className="space-x-4 w-128">
                <button
                   onClick={() => setCurrentPage("home")}
