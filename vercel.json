@@ -2,8 +2,8 @@
    "version": 2,
    "rewrites": [
       {
-         "src": "/(.*)",
-         "dest": "/frontend/dist"
+         "source": "/(.*)",
+         "destination": "/backend/functions.js"
       }
    ]
 }
