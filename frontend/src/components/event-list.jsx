@@ -1,6 +1,3 @@
-import React from "react";
-import Navbar from "../components/navbar";
-
 const EventList = () => {
    const events = [
       {
@@ -19,7 +16,6 @@ const EventList = () => {
 
    return (
       <div className="container mx-auto p-4">
-         <Navbar />
          <h2 className="text-2xl font-bold mb-6 text-center">Events</h2>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {events.map((event) => (

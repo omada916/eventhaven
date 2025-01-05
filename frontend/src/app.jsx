@@ -1,13 +1,33 @@
-import React from "react";
-import Home from "./pages/home"; // Change this to the page you want to render
-// import Register from "./pages/register";
-// import Login from "./pages/login";
-// import Dashboard from "./pages/dashboard";
+import { useState } from "react";
+import Navbar from "./components/navbar";
+import Home from "./pages/home";
+import Register from "./pages/register";
+import Login from "./pages/login";
+import Dashboard from "./pages/dashboard";
 
 const App = () => {
+  const [currentPage, setCurrentPage] = useState("home"); // State to track the current page
+
+  // Function to render the current page
+  const renderPage = () => {
+    switch (currentPage) {
+      case "home":
+        return <Home />;
+      case "register":
+        return <Register />;
+      case "login":
+        return <Login />;
+      case "dashboard":
+        return <Dashboard />;
+      default:
+        return <Home />;
+    }
+  };
+
   return (
     <div>
-      <Home /> {/* Change this to the page you want to render */}
+      <Navbar setCurrentPage={setCurrentPage} /> 
+      {renderPage()}
     </div>
   );
 };

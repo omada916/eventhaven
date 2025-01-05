@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Navbar from "../components/navbar";
+import { useState } from "react";
 
 
 const Register = () => {
@@ -14,7 +13,6 @@ const Register = () => {
 
    return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-         <Navbar />
          <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
             <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
             <div className="mb-4">
