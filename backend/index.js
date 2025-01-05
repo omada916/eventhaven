@@ -6,6 +6,8 @@ import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const firebaseConfig = {
    apiKey: "AIzaSyDol293-uzm6oykcG47e_M4aOj71zG4U9U",
@@ -25,6 +27,8 @@ const auth = getAuth(fb);
 dotenv.config();
 const PORT = process.env.PORT;
 const state = process.env.state;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(cookieParser());
 app.use(express.static("./frontend/dist"));
 app.use(express.json({ limit: "5mb" }));
@@ -42,9 +46,11 @@ app.get("/", (req, res) => {
    console.log("user on root")
 });
 
+
+
 app.get("*", (req, res) => {
    //404, KEEP AT END
-   res.sendFile("client/404/index.html")
+   res.sendFile(path.join(__dirname, "../frontend/404/index.html"));
 });
 
 app.listen(PORT, () => {

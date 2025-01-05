@@ -1,10 +1,9 @@
-import { signup, login } from "../auth/functions.auth.js"
+import { signup } from "../auth/functions.auth.js"
+import { authenticate } from "../functions.js";
 import express from "express";
 
 const router = express.Router();
 
 router.post("/signup", signup);
-router.post("/login", login);
-
 
 export default router;

@@ -1,6 +1,4 @@
-let d = document;
-
-async function request(url, way, body) {
+export const request = async (url, way, body) => {
    try {
       const response = await fetch(url, {
          method: way,

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { login } from "../scripts/auth";
 
 const Login = () => {
    const [email, setEmail] = useState("");
@@ -6,12 +7,16 @@ const Login = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("Logged in:", { email, password });
+      console.log(`User: ${email}, Pw: ${password}`);
+      login(email, password);
    };
 
    return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+         <form
+            onSubmit={handleSubmit}
+            className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
+         >
             <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
             <div className="mb-4">
                <label className="block text-gray-700">Email</label>

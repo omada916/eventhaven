@@ -18,18 +18,6 @@ const Navbar = ({ setCurrentPage }) => {
                   Home
                </button>
                <button
-                  onClick={() => setCurrentPage("register")}
-                  className="hover:text-blue-200"
-               >
-                  Register
-               </button>
-               <button
-                  onClick={() => setCurrentPage("login")}
-                  className="hover:text-blue-200"
-               >
-                  Login
-               </button>
-               <button
                   onClick={() => setCurrentPage("dashboard")}
                   className="hover:text-blue-200"
                >
@@ -42,13 +30,13 @@ const Navbar = ({ setCurrentPage }) => {
                   <div className="absolute right-0 w-59 h-200 bg-blue-600 rounded-md shadow-lg z-10">
                      <div
                         onClick={() => setCurrentPage("login")}
-                        className="m-5 hover:text-blue-200"
+                        className="m-5 hover:text-blue-200 cursor-pointer"
                      >
                         Log In
                      </div>
                      <div
                         onClick={() => setCurrentPage("register")}
-                        className="m-5 hover:text-blue-200"
+                        className="m-5 hover:text-blue-200 cursor-pointer"
                      >
                         Register
                      </div>

@@ -1,20 +1,35 @@
 import { useState } from "react";
-
+//import { signup } from "../scripts/auth";
 
 const Register = () => {
+   const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [username, setUsername] = useState("");
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("Registered:", { email, password, username });
+      console.log("Registered:", { name, email, password, username });
    };
 
    return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+         <form
+            onSubmit={handleSubmit}
+            className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
+         >
             <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
+            <div className="mb-4">
+               <label className="block text-gray-700">Name</label>
+               <input
+                  type="text"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+               />
+            </div>
             <div className="mb-4">
                <label className="block text-gray-700">Username</label>
                <input

@@ -6,30 +6,30 @@ import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState("home"); // State to track the current page
+   const [currentPage, setCurrentPage] = useState("home"); // State to track the current page
 
-  // Function to render the current page
-  const renderPage = () => {
-    switch (currentPage) {
-      case "home":
-        return <Home />;
-      case "register":
-        return <Register />;
-      case "login":
-        return <Login />;
-      case "dashboard":
-        return <Dashboard />;
-      default:
-        return <Home />;
-    }
-  };
+   // Function to render the current page
+   const renderPage = () => {
+      switch (currentPage) {
+         case "home":
+            return <Home />;
+         case "register":
+            return <Register />;
+         case "login":
+            return <Login />;
+         case "dashboard":
+            return <Dashboard />;
+         default:
+            return <Home />;
+      }
+   };
 
-  return (
-    <div>
-      <Navbar setCurrentPage={setCurrentPage} /> 
-      {renderPage()}
-    </div>
-  );
+   return (
+      <div>
+         <Navbar setCurrentPage={setCurrentPage} />
+         {renderPage()}
+      </div>
+   );
 };
 
 export default App;
