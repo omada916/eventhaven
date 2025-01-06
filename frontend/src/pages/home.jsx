@@ -1,8 +1,12 @@
 import { getValuesAsJson } from "../scripts/firebase";
 
-const Home = ({ setCurrentPage }) => {
-   const events = getValuesAsJson("/events/events");
-
+const Home = async ({ setCurrentPage }) => {
+   const eventsJSON = await getValuesAsJson("/events/events");
+   console.log(eventsJSON);
+   var events = [];
+   for (var i in eventsJSON) {
+      events.push(i);
+   }
    return (
       <div className="min-h-screen bg-gray-100">
          {/* Hero Section */}
@@ -73,7 +77,7 @@ const Home = ({ setCurrentPage }) => {
          <footer className="bg-white shadow-lg mt-12">
             <div className="max-w-6xl mx-auto px-4 py-6 text-center">
                <p className="text-gray-600">
-                  &copy; 2023 Eventify. All rights reserved.
+                  &copy; 2025 Eventify. All rights reserved.
                </p>
             </div>
          </footer>
