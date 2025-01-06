@@ -1,30 +1,7 @@
+import { getValuesAsJson } from "../scripts/firebase";
+
 const Home = ({ setCurrentPage }) => {
-   const events = [
-      {
-         id: 1,
-         title: "Music Festival",
-         date: "October 15, 2025",
-         location: "Central Park, New York",
-         description: "Join us for a day of live music and fun!",
-         image: "https://via.placeholder.com/400x200",
-      },
-      {
-         id: 2,
-         title: "Tech Conference",
-         date: "November 10, 2025",
-         location: "San Francisco, CA",
-         description: "Learn about the latest in technology and innovation.",
-         image: "https://via.placeholder.com/400x200",
-      },
-      {
-         id: 3,
-         title: "Food Fair",
-         date: "December 5, 2025",
-         location: "Chicago, IL",
-         description: "Taste delicious food from around the world.",
-         image: "https://via.placeholder.com/400x200",
-      },
-   ];
+   const events = getValuesAsJson("/events/events");
 
    return (
       <div className="min-h-screen bg-gray-100">

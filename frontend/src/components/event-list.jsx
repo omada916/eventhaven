@@ -1,3 +1,4 @@
+
 const EventList = () => {
    const events = [
       {
@@ -7,6 +8,7 @@ const EventList = () => {
          date: "2023-10-15",
       },
       {
+         
          id: 2,
          title: "Sample Event 2",
          description: "This is another sample event description.",
