@@ -1,15 +1,10 @@
-import { getValuesAsJson } from "../scripts/firebase";
 
-const Home = async ({ setCurrentPage }) => {
-   const eventsJSON = await getValuesAsJson("/events/events");
-   console.log(eventsJSON);
-   var events = [];
-   for (var i in eventsJSON) {
-      events.push(i);
-   }
+const Home = ({ setCurrentPage }) => {
+   var events = [
+      
+   ]
    return (
       <div className="min-h-screen bg-gray-100">
-         {/* Hero Section */}
          <header className="bg-blue-600 text-white py-20">
             <div className="max-w-4xl mx-auto text-center">
                <h1 className="text-5xl font-bold mb-4">
@@ -17,7 +12,7 @@ const Home = async ({ setCurrentPage }) => {
                </h1>
                <p className="text-xl mb-8">
                   Create, share, and join events near you. Whether it is a
-                  concert, conference, or meetup, we haveve got you covered.
+                  concert, conference, or meetup, we have got you covered.
                </p>
                <div className="space-x-4">
                   <a
@@ -49,11 +44,6 @@ const Home = async ({ setCurrentPage }) => {
                      key={event.id}
                      className="bg-white rounded-lg shadow-md overflow-hidden"
                   >
-                     <img
-                        src={event.image}
-                        alt={event.title}
-                        className="w-full h-48 object-cover"
-                     />
                      <div className="p-6">
                         <h3 className="text-xl font-bold text-gray-800 mb-2">
                            {event.title}
@@ -61,19 +51,12 @@ const Home = async ({ setCurrentPage }) => {
                         <p className="text-gray-600 mb-2">{event.date}</p>
                         <p className="text-gray-600 mb-4">{event.location}</p>
                         <p className="text-gray-700">{event.description}</p>
-                        <a
-                           href="#"
-                           className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-                        >
-                           Learn More
-                        </a>
                      </div>
                   </div>
                ))}
             </div>
          </section>
 
-         {/* Footer */}
          <footer className="bg-white shadow-lg mt-12">
             <div className="max-w-6xl mx-auto px-4 py-6 text-center">
                <p className="text-gray-600">

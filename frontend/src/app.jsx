@@ -13,7 +13,7 @@ const App = () => {
          case "home":
             return <Home setCurrentPage={setCurrentPage} />;
          case "register":
-            return <Register setCurrentPage={setCurrentPage}/>;
+            return <Register setCurrentPage={setCurrentPage} />;
          case "login":
             return <Login setCurrentPage={setCurrentPage} />;
          case "dashboard":
@@ -30,5 +30,4 @@ const App = () => {
       </div>
    );
 };
-
 export default App;

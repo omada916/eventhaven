@@ -16,12 +16,11 @@ const db = getDatabase(app);
 
 export const getValuesAsJson = async (route) => {
    try {
-      const dbRef = ref(db, route); // Reference to the specific route
-      const snapshot = await get(dbRef); // Fetch the data
-
+      const dbRef = ref(db, route);
+      const snapshot = await get(dbRef);
       if (snapshot.exists()) {
-         const data = snapshot.val(); // Extract the data as a JavaScript object
-         const jsonData = JSON.stringify(data, null, 2); // Convert to JSON string
+         const data = snapshot.val();
+         const jsonData = JSON.stringify(data, null, 2);
          console.log(jsonData); // Log the JSON data
          return jsonData; // Return the JSON data
       } else {
@@ -32,6 +31,18 @@ export const getValuesAsJson = async (route) => {
       console.error("Error fetching data:", error);
       throw error;
    }
+};
+
+export const getEvents = async () => {
+   var eventsJSON = await getValuesAsJson("/events/events");
+   var events = [];
+   console.log(eventsJSON);
+   for (var i in eventsJSON) {
+      events.push(i);
+      console.log(i);
+   }
+   console.log(events);
+   return events;
 };
 
 export const fetchFirebaseData = async (route) => {
@@ -47,4 +58,4 @@ export const fetchFirebaseData = async (route) => {
    } catch (error) {
       throw new Error(`Error fetching data: ${error.message}`);
    }
-}
+};
