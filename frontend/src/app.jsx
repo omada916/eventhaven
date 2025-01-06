@@ -13,13 +13,13 @@ const App = () => {
          case "home":
             return <Home setCurrentPage={setCurrentPage} />;
          case "register":
-            return <Register />;
+            return <Register setCurrentPage={setCurrentPage}/>;
          case "login":
-            return <Login />;
+            return <Login setCurrentPage={setCurrentPage} />;
          case "dashboard":
             return <Dashboard />;
          default:
-            return <Home />;
+            return <Home setCurrentPage={setCurrentPage}/>;
       }
    };
 

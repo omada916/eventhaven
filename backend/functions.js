@@ -1,6 +1,8 @@
-import { ref, get, set, child } from "firebase/database";
+import { ref, get, set, update, child } from "firebase/database";
+import db from "./firebase/db.js";
+import path from "path";
 
-export const getData = async (db, path, pname) => {
+export const getData = async (path, pname) => {
    var data = 'Nothing was run';
    var dbRef = ref(db, path)
    await get(child(dbRef, pname))
@@ -18,7 +20,7 @@ export const getData = async (db, path, pname) => {
    return data;
 }
 
-export const writeData = async (db, path, data) => {
+export const writeData = async (path, data) => {
    var output = 'Nothing was run';
    var dbRef = ref(db, path)
    await set(dbRef, data)
@@ -29,6 +31,19 @@ export const writeData = async (db, path, data) => {
          output = `Error: ${error}`
       });
    console.log(output);
+}
+export const setData = async (route, newData) => {
+   try {
+      if (typeof newData !== 'object' || newData === null || Array.isArray(newData) || Object.keys(newData).length === 0) {
+         throw new Error('newData must be a non-empty object.');
+      } else {
+         const dbRef = child(db, route); // Create a reference to the route
+         await update(dbRef, newData); // Update the data 
+      }
+      console.log('Data updated successfully!');
+   } catch (error) {
+      console.error('Error updating data:', error);
+   }
 }
 const parseCookies = (req) => {
    const cookies = {};
@@ -41,7 +56,7 @@ const parseCookies = (req) => {
    return cookies;
 };
 
-export const authenticate = (req, res, next, db) => {
+export const authenticate = (req, res, next) => {
    const cookies = parseCookies(req);
    const token = cookies.token;
 

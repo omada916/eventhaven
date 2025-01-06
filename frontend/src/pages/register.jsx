@@ -76,6 +76,7 @@ const Register = ({ setCurrentPage }) => {
                   onClick={() => {
                      setCurrentPage("login");
                   }}
+                  className="text-blue-200 font-bold cursor-pointer"
                >
                   Log In
                </a>

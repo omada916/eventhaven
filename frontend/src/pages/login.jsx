@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { login } from "../scripts/auth";
 
-const Login = () => {
+const Login = ({ setCurrentPage }) => {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
@@ -46,6 +46,17 @@ const Login = () => {
             >
                Login
             </button>
+            <p>
+               No account?
+               <a
+                  onClick={() => {
+                     setCurrentPage("login");
+                  }}
+                  className="text-blue-200 font-bold cursor-pointer"
+               >
+                  Log In
+               </a>
+            </p>
          </form>
       </div>
    );

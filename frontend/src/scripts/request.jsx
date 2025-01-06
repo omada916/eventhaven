@@ -10,6 +10,6 @@ export const request = async (url, way, body) => {
       const parsedResponse = await response.json();
       return parsedResponse;
    } catch (e) {
-      console.error(e);
+      console.error(`Error: ${e.message}`);
    }
 }

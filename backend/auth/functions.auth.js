@@ -4,7 +4,6 @@ import { getDatabase } from "firebase/database";
 import {
    getAuth,
    createUserWithEmailAndPassword,
-   signInWithEmailAndPassword,
 } from "firebase/auth";
 import cors from "cors";
 
