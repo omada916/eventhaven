@@ -1,71 +1,76 @@
+import EventList from "../components/event-list";
 
-const Home = ({ setCurrentPage }) => {
-   var events = [
-      
-   ]
+// Homepage.jsx
+function Home({ setCurrentPage }) {
    return (
-      <div className="min-h-screen bg-gray-100">
-         <header className="bg-blue-600 text-white py-20">
-            <div className="max-w-4xl mx-auto text-center">
-               <h1 className="text-5xl font-bold mb-4">
-                  Discover Amazing Events
-               </h1>
-               <p className="text-xl mb-8">
-                  Create, share, and join events near you. Whether it is a
-                  concert, conference, or meetup, we have got you covered.
-               </p>
-               <div className="space-x-4">
-                  <a
-                     onClick={() => {
-                        setCurrentPage("register");
-                     }}
-                     className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50"
-                  >
-                     Sign Up
-                  </a>
-                  <a
-                     href="#"
-                     className="bg-transparent border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600"
-                  >
-                     View Events
-                  </a>
-               </div>
+      <div className="min-h-screen bg-gray-100 p-10">
+         <div className="text-center py-16">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+               Welcome to Eventify
+            </h1>
+            <p className="text-lg text-gray-600 mb-8">
+               Discover, create, and share events with your community.
+            </p>
+            <div className="space-x-4">
+               <button
+                  onClick={() => {
+                     setCurrentPage("dashboard");
+                  }}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+               >
+                  Create Event
+               </button>
+               <button
+                  onClick={() => {
+                     setCurrentPage("events");
+                  }}
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+               >
+                  Explore Events
+               </button>
             </div>
-         </header>
+         </div>
 
-         {/* Event Grid */}
-         <section className="max-w-6xl mx-auto py-12 px-4">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">
+         <div className="max-w-4xl mx-auto text-center my-5">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+               What is Eventify?
+            </h2>
+            <p className="text-gray-600 mb-6">
+               Eventify is your go-to platform for discovering and organizing
+               events. Whether you are looking to attend a local meetup, host a
+               workshop, or share a community gathering, Eventify makes it easy
+               to connect with others and make your event a success.
+            </p>
+            <p className="text-gray-600">
+               Join thousands of users who are already using Eventify to bring
+               people together.
+            </p>
+         </div>
+         <div className="border-t border-gray-300"></div>
+         <div className="bg-red max-w-6xl mx-auto my-5 shadow-md rounded-lg">
+            <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
                Upcoming Events
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {events.map((event) => (
-                  <div
-                     key={event.id}
-                     className="bg-white rounded-lg shadow-md overflow-hidden"
-                  >
-                     <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-800 mb-2">
-                           {event.title}
-                        </h3>
-                        <p className="text-gray-600 mb-2">{event.date}</p>
-                        <p className="text-gray-600 mb-4">{event.location}</p>
-                        <p className="text-gray-700">{event.description}</p>
-                     </div>
-                  </div>
-               ))}
-            </div>
-         </section>
+            <EventList />
+         </div>
 
-         <footer className="bg-white shadow-lg mt-12">
-            <div className="max-w-6xl mx-auto px-4 py-6 text-center">
-               <p className="text-gray-600">
-                  &copy; 2025 Eventify. All rights reserved.
-               </p>
-            </div>
-         </footer>
+         <div className="w-full bg-blue-600 text-white text-center py-12 rounded-lg">
+            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+            <p className="text-lg mb-8">
+               Join Eventify today and start exploring or creating events in
+               your community.
+            </p>
+            <button
+               onClick={() => {
+                  setCurrentPage("register");
+               }}
+               className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+               Sign Up Now
+            </button>
+         </div>
       </div>
    );
-};
+}
 
 export default Home;

@@ -14,6 +14,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+export default db;
+
 export const getValuesAsJson = async (route) => {
    try {
       const dbRef = ref(db, route);

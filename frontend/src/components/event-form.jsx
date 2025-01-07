@@ -12,16 +12,24 @@ const EventForm = () => {
       e.preventDefault();
       var i = await fetchFirebaseData("/events/currentID");
       console.log(i);
-      await request("/events/create-event", "POST", JSON.stringify({
-         id: i + 1,
-         name: title,
-         date,
-         location,
-         description,
-      }));
-      await request("/events/incrementID", "POST", JSON.stringify({
-         message: "Increment",
-      }));
+      await request(
+         "/events/create-event",
+         "POST",
+         JSON.stringify({
+            id: i + 1,
+            title,
+            date,
+            location,
+            description,
+         })
+      );
+      await request(
+         "/events/incrementID",
+         "POST",
+         JSON.stringify({
+            message: "Increment",
+         })
+      );
    };
 
    return (
@@ -74,7 +82,9 @@ const EventForm = () => {
          <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-            onClick={() => {handleSubmit()}}
+            onClick={() => {
+               handleSubmit();
+            }}
          >
             Create Event
          </button>

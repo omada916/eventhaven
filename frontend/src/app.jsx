@@ -4,10 +4,10 @@ import Home from "./pages/home";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
+import Events from "./pages/events";
 
 const App = () => {
    const [currentPage, setCurrentPage] = useState("home");
-
    const renderPage = () => {
       switch (currentPage) {
          case "home":
@@ -18,8 +18,10 @@ const App = () => {
             return <Login setCurrentPage={setCurrentPage} />;
          case "dashboard":
             return <Dashboard />;
+         case "events":
+            return <Events />;
          default:
-            return <Home setCurrentPage={setCurrentPage}/>;
+            return <Home setCurrentPage={setCurrentPage} />;
       }
    };
 
