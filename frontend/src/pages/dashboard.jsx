@@ -23,7 +23,7 @@ var Dashboard = ({ setCurrentPage }) => {
       );
    }
    */
-   var user = 
+   var user = "shlong";
    return (
       <div className="min-h-screen bg-gray-100 p-6">
          {/* Dashboard Header */}
