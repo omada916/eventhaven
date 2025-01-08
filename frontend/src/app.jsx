@@ -17,7 +17,7 @@ const App = () => {
          case "login":
             return <Login setCurrentPage={setCurrentPage} />;
          case "dashboard":
-            return <Dashboard />;
+            return <Dashboard setCurrentPage={setCurrentPage} />;
          case "events":
             return <Events />;
          default:

@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import db from "../scripts/firebase";
 import { ref, get } from "firebase/database";
 
-function EventList() {
+var EventList = (eventPath) => {
    const [events, setEvents] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
 
-   // Fetch events from Firebase
    const fetchEvents = async () => {
       try {
-         const eventsRef = ref(db, "/events/events");
+         console.log(eventPath.eventPath);
+         const eventsRef = ref(db, eventPath.eventPath);
          const snapshot = await get(eventsRef);
 
          if (snapshot.exists()) {
@@ -68,6 +68,6 @@ function EventList() {
          )}
       </div>
    );
-}
+};
 
 export default EventList;
