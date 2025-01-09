@@ -23,6 +23,18 @@ const Navbar = ({ setCurrentPage }) => {
                >
                   Dashboard
                </button>
+               <button
+                  onClick={() => setCurrentPage("creator")}
+                  className="hover:text-blue-200"
+               >
+                  Create Event
+               </button>
+               <button
+                  onClick={() => setCurrentPage("Dbv")}
+                  className="hover:text-blue-200"
+               >
+                  View Data
+               </button>
                <button onClick={toggleDropdown} className="hover:text-blue-200">
                   Account
                </button>

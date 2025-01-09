@@ -29,7 +29,7 @@ export const login = async (email, password) => {
          password
       );
       const user = userCredential.user;
-      console.log("signin complete");
+      setCookie("user", user.displayName, 30);
       await storeIdToken(user);
    } catch (error) {
       console.error(`Error: ${error.message}`);
@@ -41,7 +41,7 @@ export const signup = async (name, username, email, password) => {
       name,
       username,
       email,
-      password
+      password,
    };
    await request("/auth/signup", "POST", JSON.stringify(userCreationData));
 };

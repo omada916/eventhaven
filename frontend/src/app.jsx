@@ -5,6 +5,8 @@ import Register from "./pages/register";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Events from "./pages/events";
+import Creator from "./pages/creator";
+import Dbv from "./pages/db-visualizer";
 
 const App = () => {
    const [currentPage, setCurrentPage] = useState("home");
@@ -20,6 +22,10 @@ const App = () => {
             return <Dashboard setCurrentPage={setCurrentPage} />;
          case "events":
             return <Events />;
+         case "creator":
+            return <Creator />;
+         case "Dbv":
+            return <Dbv />;
          default:
             return <Home setCurrentPage={setCurrentPage} />;
       }

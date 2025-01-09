@@ -7,8 +7,8 @@ const Login = ({ setCurrentPage }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(`User: ${email}, Pw: ${password}`);
       login(email, password);
+      console.log("user signed in");
    };
 
    return (

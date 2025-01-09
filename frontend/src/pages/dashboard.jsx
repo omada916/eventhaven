@@ -1,11 +1,12 @@
 import { useState } from "react";
 import EventList from "../components/event-list";
+import { readCookie } from "../scripts/cookies";
 
 var Dashboard = ({ setCurrentPage }) => {
-   // Boolean to check if the user is logged in
-   const [isLoggedIn, setIsLoggedIn] = useState(false); // Set to false for demonstration
-   /*
-   if (!isLoggedIn) {
+   var user = readCookie("user");
+   var userPath = `/users/${user}/events`;
+   console.log(!user);
+   if (!user) {
       return (
          <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="text-center">
@@ -13,17 +14,18 @@ var Dashboard = ({ setCurrentPage }) => {
                   Please log in to view your events.
                </h1>
                <p
-                  onClick={setCurrentPage("register")}
+                  onClick={() => {
+                     setCurrentPage("register");
+                  }}
                   className="text-gray-600"
                >
-                  Redirecting to login page...
+                  Click to go to Register page
                </p>
             </div>
          </div>
       );
    }
-   */
-   var user = "shlong";
+
    return (
       <div className="min-h-screen bg-gray-100 p-6">
          {/* Dashboard Header */}
@@ -37,7 +39,7 @@ var Dashboard = ({ setCurrentPage }) => {
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
                Your Events
             </h2>
-            <EventList eventList= />
+            <EventList eventPath={userPath} /> {/* change route later*/}
          </div>
       </div>
    );

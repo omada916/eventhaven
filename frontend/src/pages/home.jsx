@@ -51,7 +51,7 @@ function Home({ setCurrentPage }) {
             <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
                Upcoming Events
             </h2>
-            <EventList eventPath="/events/events" />
+            <EventList eventPath="/events/events" limit="true" />
          </div>
 
          <div className="w-full bg-blue-600 text-white text-center py-12 rounded-lg">
