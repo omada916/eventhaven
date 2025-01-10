@@ -10,7 +10,6 @@ const Register = ({ setCurrentPage }) => {
    const handleSubmit = (e) => {
       e.preventDefault();
       signup(name, username, email, password);
-      console.log(`Registered user ${username}`);
    };
 
    return (
@@ -71,7 +70,7 @@ const Register = ({ setCurrentPage }) => {
                Register
             </button>
             <p>
-               Have an account?{" "}
+               Have an account?
                <a
                   onClick={() => {
                      setCurrentPage("login");

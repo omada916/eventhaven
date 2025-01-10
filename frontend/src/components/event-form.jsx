@@ -14,6 +14,7 @@ const EventForm = () => {
       var i = await fetchFirebaseData("/events/currentID");
       console.log(i);
       if (pub) {
+         console.log(pub)
          await request(
             "/events/create-event",
             "POST",
@@ -130,7 +131,7 @@ const EventForm = () => {
          </div>
          <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+            className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
             onClick={(e) => {
                e.preventDefault();
                handleSubmit();

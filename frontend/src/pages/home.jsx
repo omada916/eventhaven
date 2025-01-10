@@ -1,12 +1,11 @@
 import EventList from "../components/event-list";
 
-// Homepage.jsx
 function Home({ setCurrentPage }) {
    return (
       <div className="min-h-screen bg-gray-100 p-10">
          <div className="text-center py-16">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">
-               Welcome to Eventify
+               Welcome to Eventhaven
             </h1>
             <p className="text-lg text-gray-600 mb-8">
                Discover, create, and share events with your community.
@@ -33,16 +32,16 @@ function Home({ setCurrentPage }) {
 
          <div className="max-w-4xl mx-auto text-center my-5">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
-               What is Eventify?
+               What is Eventhaven?
             </h2>
             <p className="text-gray-600 mb-6">
-               Eventify is your go-to platform for discovering and organizing
+               Eventhaven is your go-to platform for discovering and organizing
                events. Whether you are looking to attend a local meetup, host a
-               workshop, or share a community gathering, Eventify makes it easy
+               workshop, or share a community gathering, Eventhaven makes it easy
                to connect with others and make your event a success.
             </p>
             <p className="text-gray-600">
-               Join thousands of users who are already using Eventify to bring
+               Join thousands of users who are already using Eventhaven to bring
                people together.
             </p>
          </div>
@@ -57,7 +56,7 @@ function Home({ setCurrentPage }) {
          <div className="w-full bg-blue-600 text-white text-center py-12 rounded-lg">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-lg mb-8">
-               Join Eventify today and start exploring or creating events in
+               Join Eventhaven today and start exploring or creating events in
                your community.
             </p>
             <button

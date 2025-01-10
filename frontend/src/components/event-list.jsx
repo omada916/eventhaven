@@ -6,10 +6,8 @@ var EventList = (data) => {
    const [events, setEvents] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
-   console.log(data);
    const fetchEvents = async () => {
       try {
-         console.log(data.eventPath);
          const eventsRef = ref(db, data.eventPath);
          const snapshot = await get(eventsRef);
 
@@ -54,7 +52,7 @@ var EventList = (data) => {
                      className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
                   >
                      <h2
-                        className="text-xl font-semibold mb-2 cursor-pointer"
+                        className="text-xl font-semibold mb-2"
                         onClick={() => {}}
                      >
                         {event.title}

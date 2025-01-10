@@ -1,11 +1,10 @@
 import { useState } from "react";
-import EventList from "../components/event-list";
+import EventList from "../components/private-event-list";
 import { readCookie } from "../scripts/cookies";
 
 var Dashboard = ({ setCurrentPage }) => {
    var user = readCookie("user");
    var userPath = `/users/${user}/events`;
-   console.log(!user);
    if (!user) {
       return (
          <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -17,7 +16,7 @@ var Dashboard = ({ setCurrentPage }) => {
                   onClick={() => {
                      setCurrentPage("register");
                   }}
-                  className="text-gray-600"
+                  className="text-blue-600"
                >
                   Click to go to Register page
                </p>

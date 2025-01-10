@@ -4,7 +4,7 @@ import db from "../firebase/db.js";
 
 async function createPublicEvent(req, res) {
    console.log(`Public Event, ${req.body}`)
-   await writeData(`/events/events/${req.body.name}`, req.body);
+   await writeData(`/events/events/${req.body.title}`, req.body);
    res.status(200).json({ message: "created" });
 }
 async function increment(req, res) {
@@ -15,8 +15,8 @@ async function increment(req, res) {
 }
 async function createPrivateEvent(req, res) {
    console.log(`Private Event, ${req.body}`);
-   await writeData(`/users/${req.body.user}/events/${req.body.name}`, req.body)
-   res.send(201);
+   await writeData(`/users/${req.body.user}/events/${req.body.title}`, req.body)
+   res.status(201);
 }
 const router = express.Router();
 

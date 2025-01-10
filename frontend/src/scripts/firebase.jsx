@@ -23,28 +23,15 @@ export const getValuesAsJson = async (route) => {
       if (snapshot.exists()) {
          const data = snapshot.val();
          const jsonData = JSON.stringify(data, null, 2);
-         console.log(jsonData); // Log the JSON data
          return jsonData; // Return the JSON data
       } else {
-         console.log("No data found at the specified route.");
+         console.warn("No data found at the specified route.");
          return "No data";
       }
    } catch (error) {
       console.error("Error fetching data:", error);
       throw error;
    }
-};
-
-export const getEvents = async () => {
-   var eventsJSON = await getValuesAsJson("/events/events");
-   var events = [];
-   console.log(eventsJSON);
-   for (var i in eventsJSON) {
-      events.push(i);
-      console.log(i);
-   }
-   console.log(events);
-   return events;
 };
 
 export const fetchFirebaseData = async (route) => {

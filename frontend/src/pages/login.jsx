@@ -8,7 +8,6 @@ const Login = ({ setCurrentPage }) => {
    const handleSubmit = (e) => {
       e.preventDefault();
       login(email, password);
-      console.log("user signed in");
    };
 
    return (
