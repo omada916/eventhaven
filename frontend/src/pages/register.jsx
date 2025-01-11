@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signup } from "../scripts/auth";
+import { signup, login } from "../scripts/auth";
 
 const Register = ({ setCurrentPage }) => {
    const [name, setName] = useState("");
@@ -10,7 +10,18 @@ const Register = ({ setCurrentPage }) => {
    const handleSubmit = (e) => {
       e.preventDefault();
       signup(name, username, email, password);
+      login(email, password);
    };
+   useEffect(() => {
+      const intervalId = setInterval(() => {
+         if (readCookie("user") != null) {
+            window.location.reload();
+            clearInterval(intervalId);
+         }
+      }, 10);
+
+      return () => clearInterval(intervalId);
+   }, []);
 
    return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -70,12 +81,12 @@ const Register = ({ setCurrentPage }) => {
                Register
             </button>
             <p>
-               Have an account?
+               Have an account? 
                <a
                   onClick={() => {
                      setCurrentPage("login");
                   }}
-                  className="text-blue-200 font-bold cursor-pointer"
+                  className="text-blue-600 font-bold cursor-pointer"
                >
                   Log In
                </a>

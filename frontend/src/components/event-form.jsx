@@ -51,7 +51,7 @@ const EventForm = () => {
    return (
       <form
          onSubmit={handleSubmit}
-         className="max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-lg"
+         className="max-w-md mx-auto mt-8 p-6 bg-white drop-shadow-lg rounded-lg"
       >
          <h2 className="text-2xl font-bold mb-6 text-center">Create Event</h2>
          <div className="mb-4">
@@ -132,8 +132,7 @@ const EventForm = () => {
          <button
             type="submit"
             className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-            onClick={(e) => {
-               e.preventDefault();
+            onClick={() => {
                handleSubmit();
             }}
          >

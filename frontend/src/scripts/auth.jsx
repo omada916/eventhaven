@@ -45,3 +45,6 @@ export const signup = async (name, username, email, password) => {
    };
    await request("/auth/signup", "POST", JSON.stringify(userCreationData));
 };
+export const wait = (duration) => {
+   setTimeout(console.log(""), duration);
+}

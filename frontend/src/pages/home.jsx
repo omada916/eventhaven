@@ -1,6 +1,8 @@
 import EventList from "../components/event-list";
+import { readCookie } from "../scripts/cookies";
 
 function Home({ setCurrentPage }) {
+   const authed = readCookie("user")!=null;
    return (
       <div className="min-h-screen bg-gray-100 p-10">
          <div className="text-center py-16">
@@ -21,7 +23,7 @@ function Home({ setCurrentPage }) {
                </button>
                <button
                   onClick={() => {
-                     setCurrentPage("events");
+                     setCurrentPage("dashboard");
                   }}
                   className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
                >
@@ -52,22 +54,23 @@ function Home({ setCurrentPage }) {
             </h2>
             <EventList eventPath="/events/events" limit="true" />
          </div>
-
-         <div className="w-full bg-blue-600 text-white text-center py-12 rounded-lg">
-            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="text-lg mb-8">
-               Join Eventhaven today and start exploring or creating events in
-               your community.
-            </p>
-            <button
-               onClick={() => {
-                  setCurrentPage("register");
-               }}
-               className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-               Sign Up Now
-            </button>
-         </div>
+         {authed ? (
+            <div className="w-full bg-blue-600 text-white text-center py-12 rounded-lg">
+               <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+               <p className="text-lg mb-8">
+                  Join Eventhaven today and start exploring or creating events in
+                  your community.
+               </p>
+               <button
+                  onClick={() => {
+                     setCurrentPage("register");
+                  }}
+                  className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+               >
+                  Sign Up Now
+               </button>
+            </div>
+         ) : (<div></div>)}
       </div>
    );
 }

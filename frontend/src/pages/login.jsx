@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "../scripts/auth";
+import { readCookie } from "../scripts/cookies";
 
 const Login = ({ setCurrentPage }) => {
    const [email, setEmail] = useState("");
@@ -9,6 +10,16 @@ const Login = ({ setCurrentPage }) => {
       e.preventDefault();
       login(email, password);
    };
+   useEffect(() => {
+      const intervalId = setInterval(() => {
+         if (readCookie("user") != null) {
+            window.location.reload();
+            clearInterval(intervalId);
+         }
+      }, 10); 
+
+      return () => clearInterval(intervalId);
+   }, []);
 
    return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -49,11 +60,11 @@ const Login = ({ setCurrentPage }) => {
                No account?
                <a
                   onClick={() => {
-                     setCurrentPage("login");
+                     setCurrentPage("register");
                   }}
-                  className="text-blue-200 font-bold cursor-pointer"
+                  className="ml-3 text-blue-600 font-bold cursor-pointer"
                >
-                  Log In
+                  Sign Up
                </a>
             </p>
          </form>

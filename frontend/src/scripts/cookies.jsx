@@ -5,5 +5,8 @@ export const setCookie = (key, val, days) => {
    console.log("Cookie set!");
 };
 export const readCookie = (key) => {
-   return Cookies.get(key) || "Cookie Not found";
+   return Cookies.get(key) || null;
 };
+export const delCookie = (key) => {
+   Cookies.remove(key)
+}
