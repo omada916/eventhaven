@@ -39,7 +39,7 @@ const Navbar = ({ setCurrentPage }) => {
                      View Data
                   </button>
                ) : (
-                  <button className="hover:text-blue-200"></button>
+                  <></>
                )}
                <button onClick={toggleDropdown} className="hover:text-blue-200">
                   Account

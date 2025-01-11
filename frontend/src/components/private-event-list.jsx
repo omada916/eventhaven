@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
 import db from "../scripts/firebase";
 import { ref, get } from "firebase/database";
+import { setCookie, readCookie } from "../scripts/cookies";
 
-var EventList = (data) => {
+var PrivateEventList = ({ setCurrentPage }) => {
    const [events, setEvents] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
+   const userPath = `users/${readCookie("user")}/events`;
    const fetchEvents = async () => {
       try {
-         const eventsRef = ref(db, data.eventPath);
+         const eventsRef = ref(db, userPath);
          const snapshot = await get(eventsRef);
 
          if (snapshot.exists()) {
             const eventsData = snapshot.val();
-            // Convert the events object into a list
             const eventsList = Object.keys(eventsData).map((key) => ({
                id: key,
                ...eventsData[key],
             }));
-            if (data.limit) {
-               setEvents(eventsList.slice(0, 3));
-            } else {
-               setEvents(eventsList);
-            }
+            setEvents(eventsList);
          } else {
             setEvents([]);
          }
@@ -50,12 +47,16 @@ var EventList = (data) => {
                   <div
                      key={event.id}
                      className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+                     onClick={() => { }}
                   >
                      <h2
                         className="text-xl font-semibold mb-2 cursor-pointer"
-                        onClick={() => {}}
+                        onClick={() => {
+                           setCookie("currentEvent", event.title);
+                           setCurrentPage("editor");
+                        }}
                      >
-                        {event.title}
+                        {`${event.title}✏️`}
                      </h2>
                      <p className="text-gray-700 mb-4">{event.description}</p>
                      <p className="text-gray-600">
@@ -74,4 +75,4 @@ var EventList = (data) => {
    );
 };
 
-export default EventList;
+export default PrivateEventList;

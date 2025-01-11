@@ -48,3 +48,25 @@ export const fetchFirebaseData = async (route) => {
       throw new Error(`Error fetching data: ${error.message}`);
    }
 };
+
+const fetchEvents = async () => {
+   try {
+      const eventsRef = ref(db, `/users/${user}/events/${readCookie("currentEvent")}`);
+      const snapshot = await get(eventsRef);
+
+      if (snapshot.exists()) {
+         const eventsData = snapshot.val();
+         const eventsList = Object.keys(eventsData).map((key) => ({
+            id: key,
+            ...eventsData[key],
+         }));
+         return eventsList
+      } else {
+         return [];
+      }
+   } catch (err) {
+      console.error(err);
+   } finally {
+      setLoading(false);
+   }
+}

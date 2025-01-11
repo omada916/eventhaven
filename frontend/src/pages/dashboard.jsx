@@ -1,10 +1,10 @@
 import { useState } from "react";
-import EventList from "../components/private-event-list";
+import PrivateEventList from "../components/private-event-list";
+import EventList from "../components/event-list";
 import { readCookie } from "../scripts/cookies";
 
 var Dashboard = ({ setCurrentPage }) => {
    var user = readCookie("user");
-   var userPath = `/users/${user}/events`;
    if (!user) {
       return (
          <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -36,9 +36,17 @@ var Dashboard = ({ setCurrentPage }) => {
          {/* User Events Section */}
          <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
+               Private Events
+            </h2>
+            <PrivateEventList setCurrentPage={setCurrentPage}/> {/* change route later*/}
+         </div>
+
+         {/*Public*/}
+         <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
                Your Events
             </h2>
-            <EventList eventPath={userPath} /> {/* change route later*/}
+            <EventList setCurrentPage={setCurrentPage} /> {/* change route later*/}
          </div>
       </div>
    );

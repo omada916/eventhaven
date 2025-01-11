@@ -10,9 +10,9 @@ const EventForm = () => {
    const [location, setLocation] = useState("");
    const [pub, setPublic] = useState(false);
    const user = readCookie("user");
-   const handleSubmit = async () => {
+   const handleSubmit = async (e) => {
+      e.preventDefault();
       var i = await fetchFirebaseData("/events/currentID");
-      console.log(i);
       if (pub) {
          console.log(pub)
          await request(
@@ -46,6 +46,7 @@ const EventForm = () => {
             })
          );
       }
+      window.location.reload();
    };
 
    return (

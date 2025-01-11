@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard";
 import Events from "./pages/events";
 import Creator from "./pages/creator";
 import Dbv from "./pages/db-visualizer";
+import Editor from "./components/event-editor";
 
 const App = () => {
    const [currentPage, setCurrentPage] = useState("home");
@@ -26,16 +27,20 @@ const App = () => {
             return <Creator setCurrentPage={setCurrentPage} />;
          case "Dbv":
             return <Dbv />;
+         case "editor":
+            return <Editor />;
          default:
             return <Home setCurrentPage={setCurrentPage} />;
       }
    };
-
+   
    return (
       <div>
          <Navbar setCurrentPage={setCurrentPage} />
          {renderPage()}
       </div>
-   );
+   ); 
+   
 };
+
 export default App;

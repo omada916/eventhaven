@@ -13,7 +13,6 @@ var EventList = (data) => {
 
          if (snapshot.exists()) {
             const eventsData = snapshot.val();
-            // Convert the events object into a list
             const eventsList = Object.keys(eventsData).map((key) => ({
                id: key,
                ...eventsData[key],

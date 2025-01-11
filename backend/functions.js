@@ -1,4 +1,4 @@
-import { ref, get, set, update, child } from "firebase/database";
+import { ref, get, set, update, remove, child } from "firebase/database";
 import db from "./firebase/db.js";
 import path from "path";
 
@@ -70,3 +70,15 @@ export const authenticate = (req, res, next) => {
       res.status(401).json({ message: "Invalid token" });
    }
 };
+export const deleteData = async (path) => {
+   var output = 'Nothing was run';
+   var dbRef = ref(db, `${path}`);
+   await remove(dbRef)
+      .then(() => {
+         output = 'Data was deleted';
+      })
+      .catch((error) => {
+         output = `Error: ${error}`
+      });
+   return output;
+}

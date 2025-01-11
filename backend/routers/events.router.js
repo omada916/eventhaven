@@ -1,4 +1,4 @@
-import { writeData, getData, setData } from "../functions.js";
+import { writeData, getData, setData, deleteData } from "../functions.js";
 import express from "express";
 import db from "../firebase/db.js";
 
@@ -18,10 +18,16 @@ async function createPrivateEvent(req, res) {
    await writeData(`/users/${req.body.user}/events/${req.body.title}`, req.body)
    res.status(201);
 }
+async function deleteEntry(req, res) {
+   console.log(`Delete Event, ${req.body}`);
+   await deleteData(req.body.path);
+   res.status(200);
+}  
 const router = express.Router();
 
 router.post("/create-event", createPublicEvent);
 router.post("/incrementID", increment);
 router.post("/create-private-event", createPrivateEvent);
+router.post("/delete-event", deleteEntry);
 
 export default router;
