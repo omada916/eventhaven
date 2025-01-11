@@ -2,7 +2,7 @@ import EventList from "../components/event-list";
 import { readCookie } from "../scripts/cookies";
 
 function Home({ setCurrentPage }) {
-   const authed = readCookie("user")==null;
+   const authed = readCookie("user")==null ? true : false;
    return (
       <div className="min-h-screen bg-gray-100 p-10">
          <div className="text-center py-16">
