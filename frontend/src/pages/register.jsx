@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signup, login } from "../scripts/auth";
+import { readCookie } from "../scripts/cookies";
 
 const Register = ({ setCurrentPage }) => {
    const [name, setName] = useState("");
@@ -86,7 +87,7 @@ const Register = ({ setCurrentPage }) => {
                   onClick={() => {
                      setCurrentPage("login");
                   }}
-                  className="text-blue-600 font-bold cursor-pointer"
+                  className="ml-3 text-blue-600 font-bold cursor-pointer"
                >
                   Log In
                </a>

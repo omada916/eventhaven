@@ -16,7 +16,7 @@ var Dashboard = ({ setCurrentPage }) => {
                   onClick={() => {
                      setCurrentPage("register");
                   }}
-                  className="text-blue-600"
+                  className="text-blue-600 cursor-pointer"
                >
                   Click to go to Register page
                </p>

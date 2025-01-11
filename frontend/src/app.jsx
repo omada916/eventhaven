@@ -23,7 +23,7 @@ const App = () => {
          case "events":
             return <Events />;
          case "creator":
-            return <Creator />;
+            return <Creator setCurrentPage={setCurrentPage} />;
          case "Dbv":
             return <Dbv />;
          default:
